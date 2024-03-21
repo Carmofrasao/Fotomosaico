@@ -4,6 +4,14 @@ import sys
 import os
 from colorthief import ColorThief
 
+if len(sys.argv) < 6:
+    print('./photomosaic foto.jpg base_fotos caract.txt <R> <N>')
+    exit(1)
+
+if sys.argv[1] == '-h':
+    print('./photomosaic foto.jpg base_fotos caract.txt <R> <N>')
+    exit(1)
+
 foto = sys.argv[1]
 base = sys.argv[2]
 caracteristicas = sys.argv[3]
@@ -11,7 +19,7 @@ repetidas = int(sys.argv[4])
 tam_matriz = int(sys.argv[5])
 
 # Quanto mais imagens no banco, menor pode ser o valore da distancia
-distancia = 120
+distancia = 74
 
 tiles = []
 
@@ -53,6 +61,7 @@ for r in range(0, R, JR):
                     tiles.remove(tile)
                 if len(tiles) == 0:
                     print("Acabou as tiles, faz o L")
+                    exit(1)
                 break
         # if flag == 0:
         #     print("Nenhuma imagem foi encontrada para esse trecho")

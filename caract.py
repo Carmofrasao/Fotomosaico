@@ -4,9 +4,11 @@ import os
 import sys
 
 caract = open('caract.txt', 'w')
+path = sys.argv[1]
 
-for root, dirs, files in os.walk(sys.argv[1]):
+for root, dirs, files in os.walk(path):
     for file in files:
-        color_thief = ColorThief(sys.argv[1]+file)
+        color_thief = ColorThief(path+'/'+file)
+        print(file)
         dominant_color = color_thief.get_color(quality=1)
         caract.write(file+": "+str(dominant_color)+"\n")
